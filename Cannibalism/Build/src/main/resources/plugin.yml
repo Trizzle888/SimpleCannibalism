@@ -1,0 +1,10 @@
+name: "SimpleCannibalism"
+version: "1"
+main: "vb.$simplecannibalism.PluginMain"
+api-version: 1.13
+authors: [KevlarProps]
+description: "A simple cannibalism mod."
+prefix: "scb"
+commands:
+  scb:
+permissions:

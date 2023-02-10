@@ -1,0 +1,80 @@
+{
+  "plugin.dependencies": "",
+  "plugin.load-before": "",
+  "plugin.version": "1",
+  "debug-build-mode": false,
+  "open-tab": 0,
+  "plugin-components": [
+    {
+      "children": [{
+        "=": "org.bukkit.Bukkit#broadcastMessage(java.lang.String)",
+        "parameters": [{
+          "=": "expr-string",
+          "parameters": ["Cannibalism enabled, begin the feast."]
+        }]
+      }],
+      "=": "comp-command",
+      "parameters": [
+        "scb",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "children": [{
+        "=": "org.bukkit.command.CommandSender#sendMessage(java.lang.String)",
+        "parameters": [
+          {"=": "org.bukkit.Bukkit#getConsoleSender()"},
+          {
+            "=": "expr-string",
+            "parameters": ["Cannibalism enabled, feast on eachother."]
+          }
+        ]
+      }],
+      "=": "comp-plugin-enable"
+    },
+    {
+      "children": [{
+        "=": "org.bukkit.World#dropItemNaturally(org.bukkit.Location,org.bukkit.inventory.ItemStack)",
+        "parameters": [
+          {
+            "=": "org.bukkit.entity.Entity#getWorld()",
+            "parameters": [{"=": "org.bukkit.event.entity.PlayerDeathEvent#getEntity()"}]
+          },
+          {
+            "=": "org.bukkit.entity.Entity#getLocation()",
+            "parameters": [{"=": "org.bukkit.event.entity.PlayerDeathEvent#getEntity()"}]
+          },
+          {
+            "=": "expr-new-named-item",
+            "parameters": [
+              {"=": "org.bukkit.Material#ROTTEN_FLESH"},
+              {
+                "=": "expr-string",
+                "parameters": ["Human Flesh"]
+              }
+            ]
+          }
+        ]
+      }],
+      "=": "org.bukkit.event.entity.PlayerDeathEvent",
+      "parameters": ["MONITOR"]
+    }
+  ],
+  "plugin.soft-dependencies": "",
+  "plugin.name": "SimpleCannibalism",
+  "plugin.prefix": "scb",
+  "current-plugin-component": 0,
+  "plugin.author": "KevlarProps",
+  "plugin.description": "A simple cannibalism mod.",
+  "plugin.permissions": "",
+  "open-plugin-components": [
+    2,
+    1,
+    0
+  ],
+  "plugin.website": ""
+}
